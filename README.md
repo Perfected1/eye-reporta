@@ -1,16 +1,160 @@
-# React + Vite
+# Eye-Reporta 👁️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**See it. Report it. Document it.**
 
-Currently, two official plugins are available:
+Eye-Reporta is a web-based incident reporting and documentation platform that allows people to document incidents they witness, submit supporting evidence, and track the status of their reports.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The platform is designed to provide a structured way to record incidents while maintaining reporter privacy and a clear review process.
 
-## React Compiler
+## 🚧 Project Status
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**In Development**
 
-## Expanding the ESLint configuration
+Eye-Reporta is currently being developed as a React.js project. Features and architecture are subject to change as development progresses.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🎯 MVP Goals
+
+The first version of Eye-Reporta will focus on:
+
+* User registration and authentication
+* Incident reporting
+* Evidence uploads
+* Incident location and timestamps
+* Report status tracking
+* Public report discovery
+* Search and filtering
+* Reporter dashboard
+* Moderation and review workflow
+* In-app notifications
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+* React.js
+* Vite
+* React Router
+* Bootstrap
+* JavaScript
+
+### Planned Backend
+
+* Node.js
+* Express.js
+* PostgreSQL
+* REST API
+
+## 📁 Project Structure
+
+```text
+src/
+├── assets/
+├── components/
+├── context/
+├── hooks/
+├── layouts/
+├── pages/
+├── services/
+├── App.jsx
+├── App.css
+├── index.css
+└── main.jsx
+```
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+* Node.js
+* npm
+* Git
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Perfected1/eye-reporta.git
+```
+
+Enter the project directory:
+
+```bash
+cd eye-reporta
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+The application will be available at:
+
+```text
+http://localhost:5173
+```
+
+## 🧭 Planned Application Structure
+
+```text
+Eye-Reporta
+│
+├── Public
+│   ├── Home
+│   ├── Reports
+│   └── Report Details
+│
+├── Reporter
+│   ├── Submit Report
+│   ├── My Reports
+│   └── Notifications
+│
+└── Administration
+    ├── Dashboard
+    ├── Review Reports
+    └── Moderation
+```
+
+## 🔐 Privacy & Moderation
+
+Eye-Reporta is designed with reporter privacy and responsible moderation in mind.
+
+Reports submitted to the platform will go through a defined review process before being published publicly. A reporter's personal account information should not automatically be exposed on a public report.
+
+The platform will also maintain moderation records to provide an audit trail of actions taken on submitted reports.
+
+## 📌 Development Roadmap
+
+* [x] React + Vite setup
+* [x] Bootstrap integration
+* [x] React Router setup
+* [ ] Application layout
+* [ ] Landing page
+* [ ] Reports interface
+* [ ] Report submission form
+* [ ] Authentication
+* [ ] Reporter dashboard
+* [ ] Admin dashboard
+* [ ] Backend API
+* [ ] PostgreSQL database
+* [ ] Evidence management
+* [ ] Moderation workflow
+* [ ] Notifications
+* [ ] Deployment
+
+## 👨‍💻 Development
+
+Eye-Reporta is being developed incrementally with a focus on learning, maintainable architecture, and practical software engineering principles.
+
+## 📄 License
+
+License information will be added as the project develops.
