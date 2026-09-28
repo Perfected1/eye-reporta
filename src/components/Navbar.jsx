@@ -1,47 +1,108 @@
+import { Link } from "react-router-dom"
+import { useAuth } from "../context/AuthContext"
+
 function Navbar() {
+  const { user, logout } = useAuth()
+
+  function handleLogout() {
+    logout()
+  }
+
   return (
-    <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
-        <a className="navbar-brand" href="/">
+
+        <Link
+          to="/"
+          className="navbar-brand fw-bold"
+        >
           Eye-Reporta
-        </a>
+        </Link>
 
         <button
           className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#navbarContent"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="collapse navbar-collapse" id="navbarContent">
-          <ul className="navbar-nav ms-auto">
+        <div
+          className="collapse navbar-collapse"
+          id="mainNavbar"
+        >
+
+          <ul className="navbar-nav ms-auto align-items-lg-center">
+
             <li className="nav-item">
-              <a className="nav-link" href="/">
+              <Link
+                to="/"
+                className="nav-link"
+              >
                 Home
-              </a>
+              </Link>
             </li>
 
             <li className="nav-item">
-              <a className="nav-link" href="/reports">
+              <Link
+                to="/reports"
+                className="nav-link"
+              >
                 Reports
-              </a>
+              </Link>
             </li>
 
-            <li className="nav-item">
-              <a className="nav-link" href="/report">
-                Report an Incident
-              </a>
-            </li>
+            {user ? (
+              <>
+                <li className="nav-item">
+                  <Link
+                    to="/dashboard"
+                    className="nav-link"
+                  >
+                    Dashboard
+                  </Link>
+                </li>
 
-            <li className="nav-item">
-              <a className="nav-link" href="/login">
-                Login
-              </a>
-            </li>
+                <li className="nav-item ms-lg-2">
+                  <button
+                    type="button"
+                    className="btn btn-outline-light btn-sm"
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </button>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="nav-item">
+                  <Link
+                    to="/login"
+                    className="nav-link"
+                  >
+                    Login
+                  </Link>
+                </li>
+
+                <li className="nav-item ms-lg-2">
+                  <Link
+                    to="/register"
+                    className="btn btn-primary btn-sm"
+                  >
+                    Register
+                  </Link>
+                </li>
+              </>
+            )}
+
           </ul>
+
         </div>
+
       </div>
     </nav>
   )
