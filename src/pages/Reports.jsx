@@ -1,51 +1,27 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
-
-const reports = [
-  {
-    id: 1,
-    title: "Flooding on Allen Avenue",
-    category: "Environment",
-    location: "Ikeja, Lagos",
-    date: "September 26, 2026",
-    status: "Published",
-    description:
-      "Heavy rainfall resulted in significant flooding along parts of Allen Avenue."
-  },
-  {
-    id: 2,
-    title: "Traffic Light Malfunction",
-    category: "Infrastructure",
-    location: "Yaba, Lagos",
-    date: "September 25, 2026",
-    status: "Published",
-    description:
-      "A traffic signal was reportedly malfunctioning at a busy intersection."
-  },
-  {
-    id: 3,
-    title: "Road Accident",
-    category: "Accident",
-    location: "Lekki, Lagos",
-    date: "September 24, 2026",
-    status: "Under Review",
-    description:
-      "A road accident was reported during the morning commute."
-  }
-]
+import { getReports } from "../services/reportService"
 
 function Reports() {
   const [search, setSearch] = useState("")
+  const [category, setCategory] = useState("All")
+
+  const reports = getReports()
 
   const filteredReports = reports.filter((report) => {
+
     const searchTerm = search.toLowerCase()
 
-    return (
+    const matchesSearch =
       report.title.toLowerCase().includes(searchTerm) ||
       report.category.toLowerCase().includes(searchTerm) ||
       report.location.toLowerCase().includes(searchTerm) ||
       report.description.toLowerCase().includes(searchTerm)
-    )
+
+    const matchesCategory =
+      category === "All" || report.category === category
+
+    return matchesSearch && matchesCategory
   })
 
   return (
@@ -64,10 +40,10 @@ function Reports() {
         </div>
       </div>
 
-      {/* Search */}
-      <div className="row mb-4">
-        <div className="col-lg-8">
+      {/* Search and Filter */}
+      <div className="row g-3 mb-4">
 
+        <div className="col-lg-8">
           <input
             type="text"
             className="form-control form-control-lg"
@@ -75,8 +51,21 @@ function Reports() {
             value={search}
             onChange={(event) => setSearch(event.target.value)}
           />
-
         </div>
+
+        <div className="col-lg-4">
+          <select
+            className="form-select form-select-lg"
+            value={category}
+            onChange={(event) => setCategory(event.target.value)}
+          >
+            <option value="All">All Categories</option>
+            <option value="Environment">Environment</option>
+            <option value="Infrastructure">Infrastructure</option>
+            <option value="Accident">Accident</option>
+          </select>
+        </div>
+
       </div>
 
       {/* Results Count */}
@@ -151,11 +140,9 @@ function Reports() {
         ) : (
 
           <div className="col-12">
-
             <div className="alert alert-light border">
-              No reports found matching your search.
+              No reports found matching your filters.
             </div>
-
           </div>
 
         )}

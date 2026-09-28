@@ -1,4 +1,5 @@
-import { useParams, Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
+import { getReportById } from "../services/reportService"
 
 const reports = [
   {
@@ -36,10 +37,8 @@ const reports = [
 function ReportDetails() {
   const { id } = useParams()
 
-  const report = reports.find(
-    (report) => report.id === Number(id)
-  )
-
+const report = getReportById(id)
+ 
   if (!report) {
     return (
       <div className="container py-5">
